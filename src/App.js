@@ -42,45 +42,45 @@ function App() {
     removeBodyClasses()
     if(cls != null){
       document.body.classList.add('bg-'+cls)
-      if(cls === 'primary'){
-        let buttons = document.querySelectorAll('button');
-        // Loop through each button and add the class
-        buttons.forEach(function(button) {
-            button.classList.remove('bg-primary');
-            button.classList.add('bg-success');
+      // if(cls === 'primary'){
+      //   let buttons = document.querySelectorAll('button');
+      //   // Loop through each button and add the class
+      //   buttons.forEach(function(button) {
+      //       button.classList.remove('bg-primary');
+      //       button.classList.add('bg-success');
 
-        }); 
-      }
-      else{
-        let buttons = document.querySelectorAll('button');
-        // Loop through each button and add the class
-        buttons.forEach(function(button) {
-            button.classList.remove('bg-success');
-            button.classList.add('bg-primary');
+      //   }); 
+      // }
+      // else{
+      //   let buttons = document.querySelectorAll('button');
+      //   // Loop through each button and add the class
+      //   buttons.forEach(function(button) {
+      //       button.classList.remove('bg-success');
+      //       button.classList.add('bg-primary');
 
-        }); 
-      }
+      //   }); 
+      // }
 
     }
     else{
-      let buttons = document.querySelectorAll('button');
-      // Loop through each button and add the class
-      buttons.forEach(function(button) {
-          button.classList.remove('bg-success');
-          button.classList.add('bg-primary');
+      // let buttons = document.querySelectorAll('button');
+      // // Loop through each button and add the class
+      // buttons.forEach(function(button) {
+      //     button.classList.remove('bg-success');
+      //     button.classList.add('bg-primary');
 
-      }); 
+      // }); 
     if(mode==="light"){
       setMode('dark');
       document.body.style.backgroundColor="#404040"
       showAlert("Dark mode has been enabled", "success")
-      document.title = "TextUtils - Dark Mode"
+    //  document.title = "TextUtils - Dark Mode"
     }
     else{
       setMode('light')
       document.body.style.backgroundColor="white"
       showAlert("Light mode has been enabled", "success")
-      document.title = "TextUtils - Light Mode"
+     // document.title = "TextUtils - Light Mode"
      
     }
   }
@@ -88,12 +88,12 @@ function App() {
   return ( 
     <> 
      <BrowserRouter> 
-  <Navbar title="My Blog" aboutText="About Us" mode={mode} toggleMode={toggleMode}/>
+  <Navbar title="TextUtils" aboutText="About Us" mode={mode} toggleMode={toggleMode}/>
   <Alert alert={alert}/>
   <div className="container my-3">
   <Routes>
-      <Route path="/about" element={<About />} />
-      <Route path="/" element={<TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode} />} />
+      <Route path="/TextUtils/about" element={<About  mode={mode}/>} />
+      <Route path="/TextUtils/" element={<TextForm showAlert={showAlert} heading="Try TextUtils - Analyze Your Text" mode={mode} />} />
     </Routes>
     {/* <Switch>
               <Route exact path="/about">
