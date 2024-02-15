@@ -3,10 +3,22 @@ import PropTypes from 'prop-types'
 import { Link } from "react-router-dom";
 //import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 export default function Navbar(props) {
+  const handleActive = (op)=>{
+    console.log(op);
+    if(op === "About"){
+      document.getElementById('homeTextUtils').classList.remove('active')
+      document.getElementById('aboutTextUtils').classList.add('active')
+    }
+    else{
+      document.getElementById('aboutTextUtils').classList.remove('active')
+      document.getElementById('homeTextUtils').classList.add('active')
+
+    }
+  }
   return (
     <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
     <div className="container-fluid">
-       <Link className="navbar-brand" to="/TextUtils/">{props.title}</Link> 
+       <Link className="navbar-brand" to="/TextUtils/" onClick={() => handleActive('Home')}>{props.title}</Link> 
       {/* <a className="navbar-brand" href="#">{props.title}</a> */}
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
@@ -14,11 +26,11 @@ export default function Navbar(props) {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-             <Link className="nav-link active" aria-current="page" to="/TextUtils/">Home</Link>
+             <Link className="nav-link active" id="homeTextUtils" aria-current="page" to="/TextUtils/" onClick={() => handleActive('Home')}>Home</Link>
             {/* <a className="nav-link active" aria-current="page" href="#">Home</a> */}
           </li>
            <li className="nav-item">
-            <Link className="nav-link" to="/TextUtils/about">{props.aboutText}</Link>
+            <Link className="nav-link" id="aboutTextUtils" to="/TextUtils/about" onClick={() => handleActive('About')}>{props.aboutText}</Link>
           </li> 
           
         </ul>

@@ -17,10 +17,10 @@ export default function TextForm(props) {
     setText(currentValue)
   }
   const copyToClipBoard = ()=>{
-    var text = document.getElementById('myBox');
-    text.select()
-    navigator.clipboard.writeText(text.value)
-    document.getSelection().removeAllRanges()
+   // var text = document.getElementById('myBox');
+   // text.select()
+    navigator.clipboard.writeText(text)
+  //  document.getSelection().removeAllRanges()
     props.showAlert("Copied to Clipboard" , "success")
   }
   const removeExtraSpaces = ()=>{
@@ -77,7 +77,7 @@ export default function TextForm(props) {
       </div>
       <div className="container my-3" style={{color: props.mode==='light'?"black" : "white"}}>
         <h4>Your Text Summary</h4>
-        <p><b>{text.split(" ").filter((element)=>{ return element.length!==0}).length}</b> words and <b>{text.length}</b> characters</p>
+        <p><b>{text.split(/\s+/).filter((element)=>{ return element.length!==0}).length}</b> words and <b>{text.length}</b> characters</p>
         <p><b>{text.split(" ").filter((element)=>{ return element.length!==0}).length * 0.0008}</b> Minutes read</p>
         <h4>Preview</h4>
         <p>{text.length>0?text:"Nothing to Preview"}</p>
